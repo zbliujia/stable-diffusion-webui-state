@@ -10,6 +10,7 @@ from modules.shared import opts, cmd_opts, state
 class ExtensionTemplateScript(scripts.Script):
         # Extension title in menu UI
         def title(self):
+                print('----------------custom extension titile')
                 return "Extension Template"
 
         # Decide to show menu in txt2img or img2img
@@ -18,10 +19,12 @@ class ExtensionTemplateScript(scripts.Script):
         #
         # below code always show extension menu
         def show(self, is_img2img):
+                print('----------------custom extension show')
                 return scripts.AlwaysVisible
 
         # Setup menu ui detail
         def ui(self, is_img2img):
+                print('----------------custom extension ui')
                 with gr.Accordion('Extension Template', open=False):
                         with gr.Row():
                                 angle = gr.Slider(
@@ -42,7 +45,7 @@ class ExtensionTemplateScript(scripts.Script):
         # Type: (StableDiffusionProcessing, List<UI>) -> (Processed)
         # args is [StableDiffusionProcessing, UI1, UI2, ...]
         def run(self, p, angle, checkbox):
-                print('custom extension run')
+                print('----------------custom extension run')
                 # TODO: get UI info through UI object angle, checkbox
                 proc = process_images(p)
                 # TODO: add image edit process via Processed object proc
