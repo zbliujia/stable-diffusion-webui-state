@@ -42,6 +42,7 @@ class ExtensionTemplateScript(scripts.Script):
         # Type: (StableDiffusionProcessing, List<UI>) -> (Processed)
         # args is [StableDiffusionProcessing, UI1, UI2, ...]
         def run(self, p, angle, checkbox):
+                print('custom extension run')
                 # TODO: get UI info through UI object angle, checkbox
                 proc = process_images(p)
                 # TODO: add image edit process via Processed object proc
