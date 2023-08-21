@@ -61,10 +61,13 @@ class ExtensionTemplateScript(scripts.Script):
         print(p.script_args)
         for script in p.scripts.scripts:
             scriptTitle = script.title()
+            print(scriptTitle)
             scriptArgs = p.script_args[script.args_from:script.args_to]
             print(scriptArgs)
             if scriptTitle == 'ControlNet':
                 for c in scriptArgs:
                     print(c.enabled)
-                    print(c.input_image)
+                    print(c.image)
+                    print(c.get_modules_detail())
+                    print(c.__dict__)
         return p
