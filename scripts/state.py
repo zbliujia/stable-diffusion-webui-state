@@ -68,7 +68,12 @@ class ExtensionTemplateScript(scripts.Script):
             if scriptTitle == 'ControlNet':
                 for c in scriptArgs:
                     print(c.enabled)
-                    pil = Image.fromarray(c.image)
-                    print(api.encode_pil_to_base64(pil))
-                    print(c.__dict__)
+                    try:
+                        pil = Image.fromarray(c.image)
+                        print(api.encode_pil_to_base64(pil))
+                        print(c.__dict__)
+                    except Exception as e:
+                        # 捕获所有异常
+                        print('捕获到异常:', e)
+
         return p
