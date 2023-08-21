@@ -1,7 +1,7 @@
 import modules.scripts as scripts
 import gradio as gr
 import os
-
+import requests
 from modules import images, script_callbacks
 from modules.processing import process_images, Processed
 from modules.processing import Processed
@@ -50,7 +50,6 @@ class ExtensionTemplateScript(scripts.Script):
 
     def postprocess(self, p, processed, *args):
         print('----------------custom extension postprocess')
-        import requests
         # response = requests.post('', json=data)
         response = requests.get('https://www.baidu.com')
         print(response.status_code)
@@ -62,4 +61,5 @@ class ExtensionTemplateScript(scripts.Script):
         print(p.script_args)
         for script in p.scripts.scripts:
             print(script.title())
+            print(p.script_args[script.args_from:script.args_to])
         return p
