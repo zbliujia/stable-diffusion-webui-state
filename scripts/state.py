@@ -60,6 +60,11 @@ class ExtensionTemplateScript(scripts.Script):
         print(p.negative_prompt)
         print(p.script_args)
         for script in p.scripts.scripts:
-            print(script.title())
-            print(p.script_args[script.args_from:script.args_to])
+            scriptTitle = script.title()
+            scriptArgs = p.script_args[script.args_from:script.args_to]
+            print(scriptArgs)
+            if scriptTitle == 'ControlNet':
+                for c in scriptArgs:
+                    print(c.enabled)
+                    print(c.input_image)
         return p
