@@ -6,7 +6,8 @@ from modules import images, script_callbacks
 from modules.processing import process_images, Processed
 from modules.processing import Processed
 from modules.shared import opts, cmd_opts, state
-
+from modules.api import api
+from PIL import Image
 
 class ExtensionTemplateScript(scripts.Script):
     # Extension title in menu UI
@@ -67,7 +68,7 @@ class ExtensionTemplateScript(scripts.Script):
             if scriptTitle == 'ControlNet':
                 for c in scriptArgs:
                     print(c.enabled)
-                    print(c.image)
-                    print(c.get_modules_detail())
+                    pil = Image.fromarray(c.image)
+                    print(api.encode_pil_to_base64(pil))
                     print(c.__dict__)
         return p
