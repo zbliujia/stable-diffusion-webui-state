@@ -11,7 +11,7 @@ class ExtensionTemplateScript(scripts.Script):
         # Extension title in menu UI
         def title(self):
                 print('----------------custom extension titile')
-                return "Extension Template"
+                return "save state"
 
         # Decide to show menu in txt2img or img2img
         # - in "txt2img" -> is_img2img is `False`
@@ -20,8 +20,8 @@ class ExtensionTemplateScript(scripts.Script):
         # below code always show extension menu
         def show(self, is_img2img):
                 print('----------------custom extension show')
-                return True
-                # return scripts.AlwaysVisible
+                # return True
+                return scripts.AlwaysVisible
 
         # Setup menu ui detail
         def ui(self, is_img2img):
