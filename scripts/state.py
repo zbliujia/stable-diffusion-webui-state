@@ -20,7 +20,8 @@ class ExtensionTemplateScript(scripts.Script):
         # below code always show extension menu
         def show(self, is_img2img):
                 print('----------------custom extension show')
-                return scripts.AlwaysVisible
+                return True
+                # return scripts.AlwaysVisible
 
         # Setup menu ui detail
         def ui(self, is_img2img):
@@ -46,9 +47,23 @@ class ExtensionTemplateScript(scripts.Script):
         # args is [StableDiffusionProcessing, UI1, UI2, ...]
         def run(self, p, angle, checkbox):
                 print('----------------custom extension run')
+                print(p.prompt)
+                print(p.negative_prompt)
+                print(p.script_args)
+                for script in p.scripts.scripts:
+                        print(script.title())
                 # TODO: get UI info through UI object angle, checkbox
                 proc = process_images(p)
                 # TODO: add image edit process via Processed object proc
                 return proc
+
+        def postprocess(self, p, processed, *args):
+                print('----------------custom extension postprocess')
+                print(p.prompt)
+                print(p.negative_prompt)
+                print(p.script_args)
+                for script in p.scripts.scripts:
+                        print(script.title())
+                return p
 
 
