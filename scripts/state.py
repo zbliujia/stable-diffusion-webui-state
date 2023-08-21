@@ -29,7 +29,7 @@ class ExtensionTemplateScript(scripts.Script):
         print('----------------custom extension ui')
         with gr.Accordion('save state', open=False):
             with gr.Row():
-                textbox = gr.Textbox(default="保存配置", placeholder="请输入文件名")
+                textbox = gr.Textbox(label="文件名前缀", placeholder="请输入")
         # TODO: add more UI components (cf. https://gradio.app/docs/#components)
         return [textbox]
 
@@ -50,8 +50,13 @@ class ExtensionTemplateScript(scripts.Script):
 
     def postprocess(self, p, processed, *args):
         print('----------------custom extension postprocess')
+        import requests
+        # response = requests.post('', json=data)
+        response = requests.get('https://www.baidu.com')
+        print(response.status_code)
+        print(response.text)
         print(processed)
-        print(args)
+        print(args[0])
         print(p.prompt)
         print(p.negative_prompt)
         print(p.script_args)
